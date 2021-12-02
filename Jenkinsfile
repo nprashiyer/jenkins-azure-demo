@@ -6,6 +6,7 @@ pipeline {
             steps {
                 withCredentials([azureServicePrincipal('AzurePersonal')]) {
                    sh 'az bicep build --file ${WORKSPACE}/PolicyDefinitions/Policy-Tag.bicep'
+                   sh 'ls'
                 }
             }
         }
