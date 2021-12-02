@@ -10,5 +10,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Test') {
+            steps {
+                sh 'echo testing ARM Template'
+                withCredentials([azureServicePrincipal('AzurePersonal')]) {
+                    sh 'New-AzDeployment -Location "eastus" -TemplateFile ${WORKSPACE}/PolicyTag.json -WhatIf'
+                }
+            }
+        }
     }
 }
