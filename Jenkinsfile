@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo Hello World'
-                withCredentials([azureServicePrincipal('credentials_id')]) {
+                withCredentials([azureServicePrincipal('AzurePersonal')]) {
                    sh 'az group list'
                 }
             }
