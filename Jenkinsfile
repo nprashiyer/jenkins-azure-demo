@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh 'echo testing ARM Template'
                 withCredentials([azureServicePrincipal('AzurePersonal')]) {
-                    sh 'New-AzDeployment -Location "eastus" -TemplateFile ${WORKSPACE}/PolicyTag.json -WhatIf'
+                    sh 'az deployment create --location WestUS --template-file ${WORKSPACE}/PolicyTag.json --what-if'
                 }
             }
         }
